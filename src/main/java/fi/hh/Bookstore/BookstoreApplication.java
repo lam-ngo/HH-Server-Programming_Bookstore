@@ -2,6 +2,7 @@ package fi.hh.Bookstore;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import fi.hh.Bookstore.domain.Book;
 import fi.hh.Bookstore.domain.BookRepository;
+import fi.hh.Bookstore.domain.Category;
+import fi.hh.Bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -19,14 +22,19 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner studentDemo(BookRepository repository) {
+	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
 			log.info("save a couple of books");
-			repository.save(new Book("Title1", "Author1", 2016, "ABC123", 10.5));
-			repository.save(new Book("Title2", "Author2", 2017, "DEF456", 20.5));	
+			crepository.save(new Category("Category 1"));
+			crepository.save(new Category("Category 2"));
+			
+			brepository.save(new Book("Title1", "Author1", 2014, "ABC123", 10.5,crepository.findByName("Category 1").get(0)));
+			brepository.save(new Book("Title2", "Author2", 2015, "DEF456", 20.0,crepository.findByName("Category 2").get(0)));
+			brepository.save(new Book("Title3", "Author3", 2016, "GHI789", 5.0,crepository.findByName("Category 1").get(0)));
+			brepository.save(new Book("Title4", "Author4", 2017, "KLM101", 15.3,crepository.findByName("Category 2").get(0)));
 			
 			log.info("fetch all books");
-			for (Book book : repository.findAll()) {
+			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
 
