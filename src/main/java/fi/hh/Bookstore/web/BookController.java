@@ -37,7 +37,13 @@ public class BookController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
     	repository.delete(bookId);
-        return "redirect:./booklist";
+        return "redirect:../booklist";
     }     
+    
+    @RequestMapping(value = "/edit/{id}")
+    public String editBook(@PathVariable("id") Long bookId, Model model){
+    	model.addAttribute("book", repository.findOne(bookId));
+        return "edit";
+    }      
 		
 }
