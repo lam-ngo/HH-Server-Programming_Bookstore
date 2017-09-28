@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import fi.hh.Bookstore.domain.Book;
-
 @Entity
 public class Category {
 
