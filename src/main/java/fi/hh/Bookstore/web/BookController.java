@@ -43,6 +43,12 @@ public class BookController {
     	return bookRepository.findOne(bookId);
     }   
     
+    //RESTfull service to get all books
+    @RequestMapping(value="/categories", method= RequestMethod.GET)
+    public @ResponseBody List <Category> categoryListRest() {	
+    	return (List <Category>) categoryRepository.findAll();
+    }
+    
     @RequestMapping(value = "/add")
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
