@@ -24,8 +24,14 @@ public class BookController {
 	@Autowired
 	private CategoryRepository categoryRepository; 
 	
+	//Authentication
+	@RequestMapping(value="/login")
+	public String login () {
+		return "login";
+	}
+	
 	//Show all books in Thymeleaf template
-    @RequestMapping(value="/booklist")
+    @RequestMapping(value= {"/","/booklist","/showbook"})
     public String bookList(Model model) {	
         model.addAttribute("books", bookRepository.findAll());
         return "booklist";
