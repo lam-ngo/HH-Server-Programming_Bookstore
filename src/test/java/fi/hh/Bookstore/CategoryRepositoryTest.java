@@ -16,7 +16,7 @@ import fi.hh.Bookstore.domain.BookRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class BookRepositoryTest {
+public class CategoryRepositoryTest {
 	@Autowired
     private BookRepository repository;
 
@@ -30,7 +30,7 @@ public class BookRepositoryTest {
     
     @Test
     public void createNewBook() {
-    	Book book = new Book("Title1", "Author1", 2014, "ABC123", 10.5, new Category("Category5"));
+    	Book book = new Book("Title1", "Author1", 2014, "ABC123", 10.5, new Category("Category10"));
     	repository.save(book);
     	assertThat(book.getId()).isNotNull();
     }    
