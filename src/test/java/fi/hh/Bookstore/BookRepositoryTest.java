@@ -21,7 +21,7 @@ public class BookRepositoryTest {
     private BookRepository repository;
 
     @Test
-    public void findByLastnameShouldReturnStudent() {
+    public void findByTitleShouldReturnBook() {
         List<Book> books = repository.findByTitle("Title1");
         
         assertThat(books).hasSize(1);
