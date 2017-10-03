@@ -14,14 +14,20 @@ import fi.hh.Bookstore.domain.Category;
 import fi.hh.Bookstore.domain.CategoryRepository;
 import fi.hh.Bookstore.domain.User;
 import fi.hh.Bookstore.domain.UserRepository;
-
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
-public class BookstoreApplication {
+public class BookstoreApplication extends SpringBootServletInitializer {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder
+	application) {
+		return application.sources(BookstoreApplication.class);
+	}
 	
 	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	
