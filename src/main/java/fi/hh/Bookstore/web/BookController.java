@@ -14,6 +14,8 @@ import fi.hh.Bookstore.domain.Category;
 import fi.hh.Bookstore.domain.CategoryRepository;
 import fi.hh.Bookstore.domain.Book;
 import fi.hh.Bookstore.domain.BookRepository;
+import fi.hh.Bookstore.domain.User;
+import fi.hh.Bookstore.domain.UserRepository;
 
 @Controller
 public class BookController {
@@ -23,6 +25,9 @@ public class BookController {
 	
 	@Autowired
 	private CategoryRepository categoryRepository; 
+	
+	@Autowired
+	private UserRepository userRepository; 
 	
 	//Authentication
 	@RequestMapping(value="/login")
@@ -34,6 +39,7 @@ public class BookController {
     @RequestMapping(value= {"/","/booklist","/showbook"})
     public String bookList(Model model) {	
         model.addAttribute("books", bookRepository.findAll());
+        model.addAttribute("users", userRepository.findAll());
         return "booklist";
     }
     

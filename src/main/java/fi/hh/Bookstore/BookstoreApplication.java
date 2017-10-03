@@ -7,8 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import fi.hh.Bookstore.domain.Book;
 import fi.hh.Bookstore.domain.BookRepository;
@@ -17,18 +15,13 @@ import fi.hh.Bookstore.domain.CategoryRepository;
 import fi.hh.Bookstore.domain.User;
 import fi.hh.Bookstore.domain.UserRepository;
 
+
 @SpringBootApplication
-public class BookstoreApplication extends SpringBootServletInitializer {
-	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder
-	application) {
-		return application.sources(BookstoreApplication.class);
-	}
+public class BookstoreApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 	
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args){
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	
@@ -45,14 +38,19 @@ public class BookstoreApplication extends SpringBootServletInitializer {
 			brepository.save(new Book("Title4", "Author4", 2017, "KLM101", 15.3,crepository.findByName("Category 2").get(0)));
 			
 			// Create users: admin/admin user/user
-			User user1 = new User("user", "password", "USER");
-			User user2 = new User("admin", "password", "ADMIN");
+			User user1 = new User("user123", "$2a$10$xTmLzWgMPyGO3TlNBYpOuu0dfDAlF5mXvQ5IJiF8utS/fEHKTgwna", "USER");
+			User user2 = new User("admin123", "$2a$10$xTmLzWgMPyGO3TlNBYpOuu0dfDAlF5mXvQ5IJiF8utS/fEHKTgwna", "ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
 						
 			log.info("fetch all books");
 			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
+			}
+			
+			log.info("fetch all users");
+			for (User user : urepository.findAll()) {
+				log.info(user.toString());
 			}
 
 		};
