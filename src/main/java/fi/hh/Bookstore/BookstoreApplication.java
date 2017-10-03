@@ -36,7 +36,7 @@ public class BookstoreApplication {
 			brepository.save(new Book("Title4", "Author4", 2017, "KLM101", 15.3,crepository.findByName("Category 2").get(0)));
 			
 			// Create users: admin/admin user/user
-			User user1 = new User("user", "lol", "USER");
+			User user1 = new User("user", "password", "USER");
 			User user2 = new User("admin", "password", "ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
