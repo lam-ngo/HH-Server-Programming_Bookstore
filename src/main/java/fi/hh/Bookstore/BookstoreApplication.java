@@ -37,8 +37,8 @@ public class BookstoreApplication {
 			brepository.save(new Book("Title4", "Author4", 2017, "KLM101", 15.3,crepository.findByName("Category 2").get(0)));
 			
 			// Create users: admin/admin user/user
-			User user1 = new User("user123", "$2a$10$xTmLzWgMPyGO3TlNBYpOuu0dfDAlF5mXvQ5IJiF8utS/fEHKTgwna", "USER");
-			User user2 = new User("admin123", "$2a$10$xTmLzWgMPyGO3TlNBYpOuu0dfDAlF5mXvQ5IJiF8utS/fEHKTgwna", "ADMIN");
+			User user1 = new User("user", "$2a$10$xTmLzWgMPyGO3TlNBYpOuu0dfDAlF5mXvQ5IJiF8utS/fEHKTgwna", "USER");
+			User user2 = new User("admin", "$2a$10$xTmLzWgMPyGO3TlNBYpOuu0dfDAlF5mXvQ5IJiF8utS/fEHKTgwna", "ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
 						
