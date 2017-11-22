@@ -35,13 +35,12 @@ public class BookController {
 		return "login";
 	}
 	
-	//Show all books in Thymeleaf template
-    @RequestMapping(value= {"/","/booklist","/showbook"})
-    public String bookList(Model model) {	
-        model.addAttribute("books", bookRepository.findAll());
-        model.addAttribute("users", userRepository.findAll());
-        return "booklist";
-    }
+	
+ 
+    
+    
+    
+    
     
     //RESTfull service to get all books
     @RequestMapping(value="/books", method= RequestMethod.GET)
@@ -61,6 +60,22 @@ public class BookController {
     	return (List <Category>) categoryRepository.findAll();
     }
     
+		
+    
+    
+    
+    
+    
+    
+	//Show all books in Thymeleaf template
+    @RequestMapping(value= {"/","/booklist"})
+    public String bookList(Model model) {	
+        model.addAttribute("books", bookRepository.findAll());
+        model.addAttribute("users", userRepository.findAll());
+        return "booklist";
+    }
+    
+   
     @RequestMapping(value = "/add")
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
@@ -86,5 +101,4 @@ public class BookController {
     	model.addAttribute("categories", categoryRepository.findAll());
         return "edit";
     }      
-		
 }
